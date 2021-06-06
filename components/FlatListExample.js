@@ -61,13 +61,10 @@ export default function FlatListExample() {
       modalRef.current.open();
       const movieEdit = movies.find((movie) => movie.id === id);
       setIsEdit(true);
-      if (isEdit) {
-        setValueState((valueState) => ({
-          ...valueState,
-          name: movieEdit.name,
-          imageUrl: movieEdit.imageUrl,
-        }));
-      }
+      setValueState({
+        name: movieEdit.name,
+        imageUrl: movieEdit.imageUrl,
+      });
       setId(id);
     }
   };
@@ -181,11 +178,14 @@ export default function FlatListExample() {
           alignItems: "center",
           justifyContent: "center",
           width: screenWidth,
-          backgroundColor: "yellow",
           marginTop: 10,
         }}
       >
-        <TouchableHighlight onPress={handleShowModalAdd} underlayColor="tomato">
+        <TouchableHighlight
+          style={{ width: "100%" }}
+          onPress={handleShowModalAdd}
+          underlayColor="tomato"
+        >
           <Text>Add movie</Text>
         </TouchableHighlight>
       </View>
